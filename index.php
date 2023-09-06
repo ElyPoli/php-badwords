@@ -17,7 +17,24 @@
 </head>
 
 <body>
-
+    <div class="bg-success-subtle vh-100 d-flex align-items-center justify-content-center">
+        <div class="container">
+            <h1 class="text-success text-center fw-bold pb-5">PHP Badwords</h1>
+            <div class="d-flex align-items-center justify-content-center">
+                <form action="filtered_paragraph.php" method="POST" class="w-50">
+                    <div class="mb-3">
+                        <label class="form-label text-uppercase fw-bold">Your Text</label>
+                        <textarea class="form-control" rows="3" name="paragraph"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-uppercase fw-bold">Bad Word</label>
+                        <input type="text" class="form-control" name="filter">
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
