@@ -1,5 +1,14 @@
 <?php
+// Tramite la richiesta post recupero il paragrafo completo e la parola da censurare
+$complete_paragraph = $_POST["paragraph"];
+$bad_word = $_POST["filter"];
 
+// Sostituisco tutte le parole da censurare con gli asterischi
+$new_paragraph = str_replace($bad_word, "***", $complete_paragraph);
+
+// Calcolo la lunghezza originale del paragrafo e quella del paragrafo dopo che ho tolto la parola da censurare
+$origin_length = strlen($complete_paragraph);
+$new_length = strlen($new_paragraph);
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +30,20 @@
 </head>
 
 <body>
-
+    <!-- Paragrafo originale -->
+    <div>
+        <p><?php echo $complete_paragraph ?></p>
+        <p><?php echo "(" . "Length: " . $origin_length . ")" ?> </p>
+    </div>
+    <!-- Parola da censurare -->
+    <div>
+        <p><?php echo "Bad Word: " . $bad_word ?> </p>
+    </div>
+    <!-- Nuovo paragrafo -->
+    <div>
+        <p><?php echo $new_paragraph ?></p>
+        <p><?php echo "(" . "Length: " . $new_length . ")" ?></p>
+    </div>
 </body>
 
 </html>
