@@ -2,9 +2,10 @@
 // Tramite la richiesta post recupero il paragrafo completo e la parola da censurare
 $complete_paragraph = $_POST["paragraph"];
 $bad_word = $_POST["filter"];
+$bad_word_lowercase = strtolower($bad_word); // trasformo in minuscolo la parola da censurare
 
 // Sostituisco tutte le parole da censurare con gli asterischi
-$new_paragraph = str_replace($bad_word, "***", $complete_paragraph);
+$new_paragraph = str_replace($bad_word_lowercase, "***", $complete_paragraph);
 
 // Calcolo la lunghezza originale del paragrafo e quella del paragrafo dopo che ho tolto la parola da censurare
 $origin_length = strlen($complete_paragraph);
@@ -30,19 +31,30 @@ $new_length = strlen($new_paragraph);
 </head>
 
 <body>
-    <!-- Paragrafo originale -->
-    <div>
-        <p><?php echo $complete_paragraph ?></p>
-        <p><?php echo "(" . "Length: " . $origin_length . ")" ?> </p>
-    </div>
-    <!-- Parola da censurare -->
-    <div>
-        <p><?php echo "Bad Word: " . $bad_word ?> </p>
-    </div>
-    <!-- Nuovo paragrafo -->
-    <div>
-        <p><?php echo $new_paragraph ?></p>
-        <p><?php echo "(" . "Length: " . $new_length . ")" ?></p>
+    <div class="bg-success-subtle vh-100 d-flex align-items-center justify-content-center">
+        <div class="container text-center">
+            <h1 class="text-success fw-bold pb-1">PHP Badwords</h1>
+            <!-- Parola da censurare -->
+            <h4 class="text-success fst-italic pb-5"><?php echo "Word filtered: " . $bad_word ?></h4>
+            <div class="d-flex align-items-center justify-content-around">
+                <!-- Paragrafo originale -->
+                <div>
+                    <h5 class="text-success fw-bold pb-1">Original paragraph</h5>
+                    <p class="text-success fst-italic pb-1"><?php echo "(" . "Length: " . $origin_length . ")" ?> </p>
+                    <div class="bg-success text-white rounded-4 p-3">
+                        <p class="m-0 p-0"><?php echo $complete_paragraph ?></p>
+                    </div>
+                </div>
+                <!-- Nuovo paragrafo -->
+                <div>
+                    <h5 class="text-success fw-bold pb-1">Filtered paragraph</h5>
+                    <p class="text-success fst-italic pb-1"><?php echo "(" . "Length: " . $new_length . ")" ?></p>
+                    <div class="bg-success text-white rounded-4 p-3">
+                        <p class="m-0 p-0"><?php echo $new_paragraph ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
