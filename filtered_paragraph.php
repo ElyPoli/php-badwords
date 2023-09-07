@@ -1,7 +1,7 @@
 <?php
 // Tramite la richiesta post recupero il paragrafo completo e la parola da censurare
-$complete_paragraph = $_POST["paragraph"];
-$bad_word = $_POST["filter"];
+$complete_paragraph = $_POST["paragraph"] ?? null;
+$bad_word = $_POST["filter"] ?? null;
 $bad_word_lowercase = strtolower($bad_word); // trasformo in minuscolo la parola da censurare
 
 // Sostituisco tutte le parole da censurare con gli asterischi
